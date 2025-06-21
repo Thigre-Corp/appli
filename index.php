@@ -1,30 +1,8 @@
+<!--header-->
         <?php
-session_start();
-        //$_SESSION = []; //reset !!
-        // var_dump($_SESSION["products"]);
-        ?>
-<!DOCTYPE html>
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="uikit.css">
-        <script src="uikit.js"></script>
-        <title>Ajout Produit</title>
-    </head>
-    <body>
-        <header>
-            <h1>Ajouter un produit</h1>
-            <nav>
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="recap.php">Panier</a></li>
-                </ul>
-            </nav>
-            <div>
-                <?php echo count($_SESSION); ?>
-            </div>
-        </header>
+                $pageTitle ="Accueil";
+                include 'header.php'; ?>
+
             <div>
                 <form action='traitement.php?action=add' method='post'>
                     <p>
@@ -49,9 +27,9 @@ session_start();
                         <input type='submit' name='submit' value='Ajouter le produit'>
                     </p>
                 </form>
-            <div class="flex">
-    </body>
-</html>
+            </div>
+        <?php
+                include 'footer.php'; ?>
 
 <?php
 /*

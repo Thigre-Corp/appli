@@ -1,31 +1,8 @@
-<?php
-    session_start();
-?>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Récapitulatif des produits</title>
-    <link rel="stylesheet" href="uikit.css">
-    <script src="uikit.js"></script>
-</head>
-    <body>
-        <header>
-            <h1>Panier</h1>
-            <nav>
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="#">Panier</a></li>
-                </ul>
-            </nav>
-            <div>
-                <?php echo count($_SESSION); ?>
-            </div>
-        </header>
+<!--header-->
+        <?php
+                $pageTitle ="Panier";
+                include 'header.php'; ?>
     <main>
-        <a href="traitement.php?action=clear">vider panier</a>
     <?php
         if(!isset($_SESSION['products']) || empty($_SESSION['products']))
         {
@@ -52,20 +29,19 @@
                             "<td>".$product['qtt']."</td>",  
                             "<td>".number_format($product['total'], 2, ',', '&nbsp;')."&nbsp;€</td>",  
                             "<td><a href='traitement.php?action=up-qtt&id=".$index."' '>+</a>",
-                            "<td><form action='traitement.php?action=delete&product=".$index."' method='get'><input type='submit' value='-'></form>",
-                            "<td><form action='#?action=add&product=".$index."' method='get'><input type='submit' value='*'></form>",
-
+                            "<td><a href='traitement.php?action=down-qtt&id=".$index."'>-</a>",
                         "</tr>";        
                 $totalgeneral += $product['total'];   
             }           
             echo        "<tr>",
                             "<td colspan=4>Total général : </td>",
                             "<td><strong>".number_format($totalgeneral, 2, ',', '$nbsp;')."&nbsp;€</strong></td>",
+                            "<td colspan=2><a href='traitement.php?action=clear'>vider panier</a>",
                         "</tr>",                     
                     "</tbody>", 
                  "</table>";
         }
-    ?>
-        </main>
-</body>
-</html>
+        //footer
+        include 'footer.php'; ?>
+
+<?php
