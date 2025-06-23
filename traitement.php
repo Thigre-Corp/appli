@@ -20,27 +20,39 @@
                         ];
                         $_SESSION['products'][] = $product;
                         $_SESSION['nbProduits']+=$qtt;
+                    $_SESSION['alert'] = 'add'; 
                     }   
-                    header('Location:index.php');
+                    header("Location:index.php?");
                 }
                 break;
             case "delete":
                 $_SESSION['nbProduits'] -= $_SESSION['products'][$_GET['id']]['qtt'];
                 unset($_SESSION['products'][$_GET['id']]);
-                header('Location:index.php');
+                $_SESSION['alert'] = 'delete'; 
+                header('Location:recap.php');
                 break;
             case "clear":
                 $_SESSION['nbProduits'] = 0 ;
                 unset($_SESSION['products']);
                 header('Location:index.php');
+                 $_SESSION['alert'] = 'clear'; 
                 break;
             case "up-qtt":
                 $_SESSION['products'][$_GET['id']]['total'] = $_SESSION['products'][$_GET['id']]['price'] * ++$_SESSION['products'][$_GET['id']]['qtt'];
                 $_SESSION['nbProduits']++;
+                $_SESSION['alert'] = 'up-qtt'; 
                 header('Location:recap.php');
                 break;
             case "down-qtt":
-                $_SESSION['products'][$_GET['id']]['total'] = $_SESSION['products'][$_GET['id']]['price'] * --$_SESSION['products'][$_GET['id']]['qtt'];
+                if (($_SESSION['products'][$_GET['id']]['total'] = $_SESSION['products'][$_GET['id']]['price'] * --$_SESSION['products'][$_GET['id']]['qtt']) == 0) {
+                    unset($_SESSION['products'][$_GET['id']]);
+                    $_SESSION['alert'] = 'delete';
+                    $_SESSION['nbProduits'] -= $_SESSION['products'][$_GET['id']]['qtt'];
+                    unset($_SESSION['products'][$_GET['id']]);
+                }
+                else{
+                $_SESSION['alert'] = 'down-qtt'; 
+                }
                 $_SESSION['nbProduits']--;
                 header('Location:recap.php');
                 break;

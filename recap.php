@@ -28,15 +28,16 @@
                             "<td>".number_format($product['price'], 2, ',', '&nbsp;')."&nbsp;€</td>",
                             "<td>".$product['qtt']."</td>",  
                             "<td>".number_format($product['total'], 2, ',', '&nbsp;')."&nbsp;€</td>",  
-                            "<td><a href='traitement.php?action=up-qtt&id=".$index."' '>+</a>",
-                            "<td><a href='traitement.php?action=down-qtt&id=".$index."'>-</a>",
+                            "<td><a class='uk-button uk-button-default' href='traitement.php?action=up-qtt&id=".$index."' '>+</a>",
+                            "<td><a class='uk-button uk-button-default' href='traitement.php?action=down-qtt&id=".$index."'>-</a>",
+                            "<td><a class='uk-button uk-button-default' href='traitement.php?action=delete&id=".$index."' uk-icon='icon: trash'></a>",
                         "</tr>";        
                 $totalgeneral += $product['total'];   
             }           
             echo        "<tr>",
                             "<td colspan=4>Total général : </td>",
                             "<td><strong>".number_format($totalgeneral, 2, ',', '$nbsp;')."&nbsp;€</strong></td>",
-                            "<td colspan=2><a href='traitement.php?action=clear'>vider panier</a>",
+                            "<td colspan=2><a class='uk-button uk-button-default' href='traitement.php?action=clear'>vider panier</a>",
                         "</tr>",                     
                     "</tbody>", 
                  "</table>";
