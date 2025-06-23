@@ -14,7 +14,7 @@ session_start();
     </head>
     <body style="background: center / contain no-repeat url('img/fondmarche.jpg'); height: 100vh; " >
     <div class="uk-container-expand" style="height: 100vh;" >
-            <header class="uk-navbar-container uk-padding" style="opacity: 0.8;">
+            <header class="uk-navbar-container uk-padding" style="opacity: 0.9;">
                 <h1 class="uk-text-large uk-padding uk-position-top-left">Ma première Appli</h1>
                 <h2 class="uk-text-meta uk-block-inline">Celle qui met en oeuvre la <strong>$_SESSION</strong></h2>
                 <nav class="uk-navbar uk-position-top-right uk-padding">
@@ -35,44 +35,47 @@ session_start();
                             <?php
                         if (isset($_SESSION['alert'])){
                             switch($_SESSION['alert']){
+                                case 'non':
+                                    echo "
+                                    <div class='uk-alert-danger uk-animation-slide-top uk-text-center' duration='1500'>Manipulation interdite</div>
+                                    ";
+                                    break;
                                 case "add":
                                     echo "
                                     <div class='uk-alert-success uk-animation-slide-top uk-text-center' duration='1500'>Produit ajouté !</div>
                                     ";
                                     break;
-                                    case "delete":
-                                        echo "
-                                        <div class='uk-alert-warning uk-animation-slide-top uk-text-center'>Produit supprimé !</div>
-                                        ";
-                                        break;
-                                        case "clear":
-                                            echo "
-                                            <div class='uk-alert-danger uk-animation-slide-top uk-text-center'>Panier supprimé !</div>
-                                            ";
-                                            break;
-                                            case "up-qtt":
-                                                echo "
-                                                <div class='uk-alert-success uk-animation-slide-top uk-text-center'>Quantité ajoutée avec succès</div>
-                                                ";
-                                                break;
-                                                
-                                                case "down-qtt":
-                                                    echo "
-                                                    <div class='uk-alert-success uk-animation-slide-top uk-text-center'>Quantité déduite avec succès</div>
-                                                    ";
-                                                    break;
-                                                }
-                                                unset($_SESSION['alert']);
-                                            }
-                                            ?>
+                                case "delete":
+                                    echo "
+                                    <div class='uk-alert-warning uk-animation-slide-top uk-text-center'>Produit supprimé !</div>
+                                    ";
+                                    break;
+                                case "clear":
+                                    echo "
+                                    <div class='uk-alert-danger uk-animation-slide-top uk-text-center'>Panier supprimé !</div>
+                                    ";
+                                    break;
+                                case "up-qtt":
+                                    echo "
+                                    <div class='uk-alert-success uk-animation-slide-top uk-text-center'>Quantité ajoutée avec succès</div>
+                                    ";
+                                    break;                                                
+                                case "down-qtt":
+                                    echo "
+                                    <div class='uk-alert-success uk-animation-slide-top uk-text-center'>Quantité déduite avec succès</div>
+                                    ";
+                                    break;
+                            }
+                        unset($_SESSION['alert']);
+                    }
+                    ?>
                 </div>
             </header>
             <main>
                 <div>
                     <div class="uk-flex uk-position-center uk-padding" style="
-                                                                                
                                                                                 background: rgba(242, 242, 242, 0.7);
                                                                                 border-radius: 16px;
                                                                                 backdrop-filter: blur(10px);
-
+                                                                                box-shadow: 4px 4px 8px  rgba(103, 103, 103, 0.7);
                                                                                 ">

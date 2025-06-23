@@ -39,8 +39,8 @@ ___ une session correspond à l'identification unique d'un client (navigateur) p
 certaines données et d'y accéder, et ce tant que le navigateur est ouvert ET que le serveur l'autorise (par exemple,  validité limité à 180 minutes)
 
 superglogales:
-___ en PHP, il s'agit d'un ensemble de variable globales, de type tableau, et accessible par tout les script PHP étant executés dans la session. 
-eg: $_SESSION, $_POST, $_COOCKIE
+        ___ en PHP, il s'agit d'un ensemble de variable globales, de type tableau, et accessible par tout les script PHP étant executés dans la session. 
+        eg: $_SESSION, $_POST, $_COOCKIE
 
 pourquoi envoyer un form en post et pas en get 
 ___ l'envoie d'un formulaire en POST permet de ne pas surchargé l'URL.
